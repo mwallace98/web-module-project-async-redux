@@ -12,7 +12,8 @@ const reducer = (state = initialState,action) => {
             return{
                 ...state,
                 name: action.payload.name,
-                city: action.payload.city
+                city: action.payload.city,
+                imageURL:action.payload.imageURL
             }
         default:
             return state
