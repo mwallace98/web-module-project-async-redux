@@ -14,7 +14,7 @@ function App(props) {
   .then(res => {
     const personData =  res.data.results[0]
     console.log(personData)
-    dispatch(fetchPersonSuccess(personData.name.first,personData.location.city,personData.picture.large))
+    props.fetchPersonSuccess(personData.name.first,personData.location.city,personData.picture.large)
   })
   .catch(err => {
     console.log(err)
@@ -44,6 +44,8 @@ const mapStateToProps = (state) => {
     imageURL:state.imageURL
   }
 }
+
+
 
 
 
