@@ -1,4 +1,4 @@
-import { FETCH_PERSON_SUCCESS } from "../Actions/GetPerson";
+import { FETCH_PERSON_SUCCESS } from "../Actions/Index";
 
 const initialState = {
     name:'',
@@ -7,6 +7,7 @@ const initialState = {
 }
 
 const reducer = (state = initialState,action) => {
+    console.log('reducer')
     switch(action.type){
         case FETCH_PERSON_SUCCESS:
             return{

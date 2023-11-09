@@ -2,20 +2,19 @@ import React from 'react';
 import './App.css';
 import axios from 'axios'
 import { connect } from 'react-redux';
-import { FETCH_PERSON_SUCCESS, fetchPersonSuccess } from './Actions/GetPerson';
+import { fetchPersonSuccess } from './Actions/Index';
 
 
 
 function App(props) {
-  const {name,city,imageURL} = props
+  const {name,city,imageURL,dispatch} = props
   
   const getFakePerson = () => {
     axios.get('https://randomuser.me/api/')
   .then(res => {
-   
     const personData =  res.data.results[0]
     console.log(personData)
-    props.dispatch(fetchPersonSuccess(personData.name.first,personData.location.city,personData.picture.large))
+    dispatch(fetchPersonSuccess(personData.name.first,personData.location.city,personData.picture.large))
   })
   .catch(err => {
     console.log(err)
@@ -49,4 +48,4 @@ const mapStateToProps = (state) => {
 
 
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps,{fetchPersonSuccess})(App);
